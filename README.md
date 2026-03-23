@@ -2,6 +2,7 @@
 
 ZenPulse is a meditation and mindfulness app built with Flutter. It runs on both iOS and Android from a single codebase. The app gives users a library of guided meditation sessions, a session timer with phase tracking, an AI mood booster, a personal journey dashboard, and a fully themeable UI through an "Aura" system.
 
+
 ---
 
 ## Features
