@@ -1,103 +1,45 @@
-# ZenPulse — AI Meditation App
+# ZenPulse
 
-A Flutter mobile app for iOS & Android that combines a meditations library with an AI-powered daily affirmation feature and a premium subscription (paywall) flow.
+A meditation app built with Flutter. Supports iOS and Android.
 
----
+## What it does
 
-## Project structure
+- Browse a library of meditation sessions (free + premium)
+- Run a timer for any session with phase tracking
+- AI Mood Booster — pick a mood, get a personalised affirmation
+- Weekly rhythm chart and journey stats
+- Aura themes — 6 color palettes that change the whole app feel
+- Support the dev with in-app spark packs
 
-```
-lib/
-├── main.dart                       # App entry-point, get_it setup, MultiProvider, routes
-├── models/
-│   ├── meditation.dart             # Meditation data class
-│   └── user.dart                   # User data class (isSubscribed, selectedMood)
-├── providers/                      # ChangeNotifier state containers
-│   ├── subscription_provider.dart  # isSubscribed, purchase(), restore()
-│   ├── meditation_provider.dart    # Loads and exposes the meditation list
-│   └── affirmation_provider.dart   # Generates mood-based affirmations (mock LLM)
-├── viewmodels/                     # Thin PODO screen orchestrators
-│   ├── paywall_viewmodel.dart
-│   ├── meditation_list_viewmodel.dart
-│   └── affirmation_viewmodel.dart
-├── views/                          # One file per screen
-│   ├── meditations_home_screen.dart # Home — list of sessions, lock overlay
-│   ├── paywall_screen.dart         # Premium subscription / paywall
-│   └── affirmation_screen.dart     # AI mood booster
-├── services/
-│   └── mock_api_service.dart       # Simulates remote API + LLM calls
-└── utils/
-    └── constants.dart              # AppColors, AppSpacing, screenScale(), sp()
-```
+## Stack
 
----
+- Flutter + Dart
+- Provider for state management
+- get_it for dependency injection
+- Shared Preferences for local persistence
+- MVVM architecture
 
-## Architecture
-
-**MVVM + Provider + get_it**
-
-| Layer | Role |
-|---|---|
-| **Models** | Plain Dart classes (`Meditation`, `User`) |
-| **Services** | `MockApiService` — registered as a `get_it` lazy singleton; injected into providers |
-| **Providers** | `ChangeNotifier` subclasses holding all mutable state — data source for ViewModels |
-| **ViewModels** | Stateless PODO objects created inside `Consumer` builders; receive provider references and expose screen-specific logic |
-| **Views** | `StatelessWidget` screens using `Consumer` / `Consumer2` to read state and call ViewModel methods |
-
-Navigation uses Flutter's `Navigator` with named routes.  
-`get_it` keeps `MockApiService` as a singleton decoupled from the widget tree.
-
----
-
-## Features
-
-- **Meditation list** — 10 sessions, 5 free / 5 premium. Premium cards show a semi-transparent lock overlay.
-- **Paywall** — premium gradient design with a benefits list, monthly/yearly plan selector (yearly shows a "Save 50%" badge), and a "Try Free for 7 Days" CTA that simulates a purchase.
-- **AI Mood Booster** — pick 😊 Joy, 😌 Calm, or 🔥 Energy; the app calls `MockApiService.getAffirmation()` which adds a 600 ms fake LLM latency and returns one of three Russian-language phrases. "Ещё" re-generates.
-
----
-
-## Getting started
-
-### Prerequisites
-
-- Flutter ≥ 3.10 (`flutter --version`)
-- Dart ≥ 3.0
-
-### Install & run
+## Run it
 
 ```bash
-# 1  Clone / open the project
-cd zen_pulse
-
-# 2  Fetch dependencies
 flutter pub get
-
-# 3  Run on a connected device or emulator
 flutter run
 ```
 
-### Lint check
+## Structure
 
-```bash
-flutter analyze
+```
+lib/
+  models/        # Meditation, User
+  providers/     # State (subscriptions, meditations, journey, affirmations, settings, support)
+  viewmodels/    # Screen logic, pure Dart
+  views/         # Screens
+  widgets/       # Shared UI components
+  services/      # Mock API
+  utils/         # Constants, routes, icons
+  core/          # App config, DI, l10n, themes
 ```
 
----
-
-## How AI was used to generate this project
-
-GitHub Copilot (Claude Sonnet 4.6) was used to:
-
-1. **Scaffold the full project structure** — directory layout, file naming, import graph — from a natural-language prompt describing MVVM + Provider + get_it architecture requirements.
-2. **Generate all Dart files** — models, providers, viewmodels, views, services and utilities — iterating on each until the analyzer reported zero issues.
-3. **Implement adaptive layout** — the AI applied `MediaQuery.sizeOf`, `screenScale()` and `sp()` helpers automatically after being told the target range was iPhone SE → Pro Max.
-4. **Write this README** — including the reflection answer below.
-
-Every generated file was reviewed for correctness before being accepted.  
-Repository: *(fill in after pushing to GitHub)*
-
----
 
 ## Контрольный вопрос
 
