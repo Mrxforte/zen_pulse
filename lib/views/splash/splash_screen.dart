@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:zen_pulse/core/config/aura_theme.dart';
+import 'package:zen_pulse/core/l10n/app_localizations.dart';
 import 'package:zen_pulse/utils/app_routes.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -130,7 +131,7 @@ class _SplashScreenState extends State<SplashScreen>
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      'Rhythm for your mind',
+                      context.l10n.tagline,
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.white.withValues(alpha: 0.7),

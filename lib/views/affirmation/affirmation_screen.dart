@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../core/config/aura_theme.dart';
+import '../../core/l10n/app_localizations.dart';
 import '../../providers/affirmation_provider.dart';
 import '../../viewmodels/affirmation/affirmation_viewmodel.dart';
 import '../../utils/constants.dart';
@@ -8,11 +9,15 @@ import '../../utils/constants.dart';
 class AffirmationScreen extends StatelessWidget {
   const AffirmationScreen({super.key});
 
-  static const List<({String key, String emoji, String label})> _moods = [
-    (key: 'joy', emoji: '😊', label: 'Joy'),
-    (key: 'calm', emoji: '😌', label: 'Calm'),
-    (key: 'energy', emoji: '🔥', label: 'Energy'),
-  ];
+  static List<({String key, String emoji, String label})> _moodsList(
+    AppLocalizations l10n,
+  ) {
+    return [
+      (key: 'joy', emoji: '😊', label: l10n.moodJoy),
+      (key: 'calm', emoji: '😌', label: l10n.moodCalm),
+      (key: 'energy', emoji: '🔥', label: l10n.moodEnergy),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +26,7 @@ class AffirmationScreen extends StatelessWidget {
     final wideLayout = !isPhone(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AI Mood Booster'),
+        title: Text(context.l10n.aiMoodBooster),
         leading: const BackButton(),
       ),
       body: Container(
@@ -100,7 +105,7 @@ class _MoodPanel extends StatelessWidget {
       children: [
         SizedBox(height: AppSpacing.lg * scale),
         Text(
-          'How are you feeling?',
+          context.l10n.howAreYouFeeling,
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.white,
@@ -110,7 +115,7 @@ class _MoodPanel extends StatelessWidget {
         ),
         SizedBox(height: AppSpacing.xs * scale),
         Text(
-          'Pick a mood to receive your personalised affirmation.',
+          context.l10n.pickMoodSubtitle,
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.white54, fontSize: sp(context, 14)),
         ),
@@ -119,7 +124,7 @@ class _MoodPanel extends StatelessWidget {
           alignment: WrapAlignment.center,
           spacing: 14 * scale,
           runSpacing: 14 * scale,
-          children: AffirmationScreen._moods.map((mood) {
+          children: AffirmationScreen._moodsList(context.l10n).map((mood) {
             return _MoodChip(
               emoji: mood.emoji,
               label: mood.label,
@@ -211,7 +216,7 @@ class _AffirmationDisplay extends StatelessWidget {
             ),
             SizedBox(height: AppSpacing.md),
             Text(
-              'Select a mood above\nto get your affirmation',
+              context.l10n.selectMoodPrompt,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white38,
@@ -225,15 +230,15 @@ class _AffirmationDisplay extends StatelessWidget {
     }
 
     if (vm.isLoading) {
-      return const Center(
+      return Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            CircularProgressIndicator(),
-            SizedBox(height: 16),
+            const CircularProgressIndicator(),
+            const SizedBox(height: 16),
             Text(
-              'Generating your affirmation…',
-              style: TextStyle(color: Colors.white54),
+              context.l10n.generatingAffirmation,
+              style: const TextStyle(color: Colors.white54),
             ),
           ],
         ),
@@ -267,7 +272,7 @@ class _AffirmationDisplay extends StatelessWidget {
           OutlinedButton.icon(
             onPressed: vm.onRetry,
             icon: const Icon(Icons.refresh_rounded),
-            label: const Text('New one'),
+            label: Text(context.l10n.newAffirmation),
             style: OutlinedButton.styleFrom(
               foregroundColor: Colors.white,
               side: BorderSide(color: Colors.white.withAlpha(97)),

@@ -139,7 +139,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 Icon(Icons.info_outline, color: context.aura.accent, size: 18),
                 const SizedBox(width: AppSpacing.sm),
                 Text(
-                  'Total: ${viewModel.getTotalSessionDuration()}',
+                  l10n.sessionTotal(viewModel.getTotalSessionDuration()),
                   style: TextStyle(
                     color: context.aura.accent,
                     fontSize: 12,

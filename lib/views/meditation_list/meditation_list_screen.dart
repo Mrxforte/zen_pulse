@@ -8,6 +8,7 @@ import '../../providers/support_provider.dart';
 import '../../providers/subscription_provider.dart';
 import '../../utils/app_icons.dart';
 import '../../utils/app_routes.dart';
+import '../../utils/app_sizes.dart';
 import '../../utils/constants.dart';
 import '../../viewmodels/meditation_list/meditation_list_viewmodel.dart';
 import '../home/widgets/home_dashboard.dart';
@@ -25,6 +26,22 @@ class MeditationListScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: AppSizes.appBarHeight,
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(1.0),
+          child: Container(
+            height: 1.0,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  context.aura.accent.withValues(alpha: 0.0),
+                  context.aura.accent.withValues(alpha: 0.35),
+                  context.aura.accent.withValues(alpha: 0.0),
+                ],
+              ),
+            ),
+          ),
+        ),
         title: Text(
           l10n.appName,
           style: TextStyle(
@@ -36,21 +53,22 @@ class MeditationListScreen extends StatelessWidget {
         actions: [
           _TopIconAction(
             icon: AppIcons.journey,
-            tooltip: 'Journey',
+            tooltip: l10n.journeyTitle,
             onTap: () => Navigator.pushNamed(context, AppRoutes.journey),
           ),
-          SizedBox(width: 8 * scale),
+          SizedBox(width: 6 * scale),
           _TopIconAction(
             icon: AppIcons.settings,
-            tooltip: 'Settings',
+            tooltip: l10n.settingsTitle,
             onTap: () => Navigator.pushNamed(context, AppRoutes.settings),
           ),
+          SizedBox(width: 6 * scale),
           _TopIconAction(
-            icon: Icons.auto_awesome_rounded,
-            tooltip: 'AI Mood Booster',
+            icon: AppIcons.aiMoodBooster,
+            tooltip: l10n.aiMoodBooster,
             onTap: () => Navigator.pushNamed(context, AppRoutes.affirmation),
           ),
-          SizedBox(width: 8 * scale),
+          SizedBox(width: 10 * scale),
         ],
       ),
       body: Container(
@@ -100,7 +118,7 @@ class MeditationListScreen extends StatelessWidget {
                             ElevatedButton(
                               onPressed: () =>
                                   meditationProvider.loadMeditations(),
-                              child: const Text('Retry'),
+                              child: Text(l10n.retry),
                             ),
                           ],
                         ),
@@ -152,19 +170,23 @@ class _TopIconAction extends StatelessWidget {
       message: tooltip,
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(AppSizes.appBarActionRadius),
         child: Container(
-          width: 64,
-          height: 64,
+          width: AppSizes.appBarActionSize,
+          height: AppSizes.appBarActionSize,
           decoration: BoxDecoration(
             color: Colors.white.withValues(alpha: 0.06),
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(AppSizes.appBarActionRadius),
             border: Border.all(
               color: Colors.white.withValues(alpha: 0.22),
               width: 1.2,
             ),
           ),
-          child: Icon(icon, color: Colors.white, size: 24),
+          child: Icon(
+            icon,
+            color: Colors.white,
+            size: AppSizes.appBarActionIconSize,
+          ),
         ),
       ),
     );

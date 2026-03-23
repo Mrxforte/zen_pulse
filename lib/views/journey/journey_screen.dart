@@ -124,7 +124,7 @@ class _WeeklyRhythmCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final maxValue = minutes.fold<double>(0, (a, b) => a > b ? a : b);
-    const labels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    final labels = context.l10n.weekdayLabels;
 
     return GlassCard(
       child: SizedBox(
@@ -205,7 +205,11 @@ class _RecentJourneysList extends StatelessWidget {
                     shape: BoxShape.circle,
                     color: context.aura.accent,
                   ),
-                  child: const Icon(Icons.spa_rounded, size: 16, color: Colors.white),
+                  child: const Icon(
+                    Icons.spa_rounded,
+                    size: 16,
+                    color: Colors.white,
+                  ),
                 ),
                 const SizedBox(width: AppSpacing.md),
                 Expanded(

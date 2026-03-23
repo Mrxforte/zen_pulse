@@ -187,7 +187,9 @@ class SupportDevelopmentScreen extends StatelessWidget {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
-                                      'Thanks! +${support.selectedPack?.sparks ?? 0} sparks added.',
+                                      context.l10n.sparksAdded(
+                                        support.selectedPack?.sparks ?? 0,
+                                      ),
                                     ),
                                   ),
                                 );

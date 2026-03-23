@@ -30,20 +30,30 @@ class ChooseAuraScreen extends StatelessWidget {
       builder: (context) => AlertDialog(
         backgroundColor: context.aura.surface,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
-        title: Text('Unlock ${aura.displayName}?'),
+        title: Text(context.l10n.unlockAura(aura.displayName)),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(aura.subtitle),
             const SizedBox(height: AppSpacing.md),
-            Text(
-              'Bolt $cost sparks',
-              style: const TextStyle(fontWeight: FontWeight.w700),
+            Row(
+              children: [
+                Icon(
+                  Icons.bolt_rounded,
+                  size: 16,
+                  color: context.aura.premiumBadge,
+                ),
+                const SizedBox(width: 4),
+                Text(
+                  context.l10n.sparksCost(cost),
+                  style: const TextStyle(fontWeight: FontWeight.w700),
+                ),
+              ],
             ),
             const SizedBox(height: AppSpacing.sm),
             Text(
-              'Your energy: ${support.sparks} sparks',
+              context.l10n.yourEnergy(support.sparks),
               style: TextStyle(
                 color: enough ? Colors.white70 : Colors.redAccent,
               ),
@@ -53,7 +63,7 @@ class ChooseAuraScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, _UnlockAction.cancel),
-            child: const Text('Cancel'),
+            child: Text(context.l10n.cancelLabel),
           ),
           FilledButton(
             style: FilledButton.styleFrom(
@@ -66,7 +76,9 @@ class ChooseAuraScreen extends StatelessWidget {
               context,
               enough ? _UnlockAction.unlock : _UnlockAction.getSparks,
             ),
-            child: Text(enough ? 'Unlock Now' : 'Get Sparks'),
+            child: Text(
+              enough ? context.l10n.unlockNow : context.l10n.getSparksLabel,
+            ),
           ),
         ],
       ),

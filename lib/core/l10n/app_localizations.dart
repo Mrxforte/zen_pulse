@@ -202,6 +202,186 @@ class AppLocalizations {
         'kontent taqdim etmaydi.',
   );
 
+  // ── Home dashboard ──────────────────────────────────────────────────────────
+
+  String get totalRelax =>
+      _t(en: 'Total Relax', ru: 'Полное Расслабление', uz: 'To\'liq Dam');
+
+  String get changeColorsSubtitle => _t(
+    en: 'Change colors and atmosphere',
+    ru: 'Сменить цвета и атмосферу',
+    uz: 'Rang va muhitni o\'zgartiring',
+  );
+
+  String get getSparksSubtitle => _t(
+    en: 'Get sparks and support updates',
+    ru: 'Получить искры и поддержать обновления',
+    uz: 'Uchqunlar oling va yangilanishlarni qo\'llab-quvvatlang',
+  );
+
+  String get noMeditationsAvailable => _t(
+    en: 'No meditation sessions available right now.',
+    ru: 'Сессии медитации пока недоступны.',
+    uz: 'Hozircha meditatsiya sessiyalari mavjud emas.',
+  );
+
+  // ── Common actions ──────────────────────────────────────────────────────────
+
+  String get retry => _t(en: 'Retry', ru: 'Повторить', uz: 'Qayta urinish');
+
+  String get cancelLabel => _t(en: 'Cancel', ru: 'Отмена', uz: 'Bekor qilish');
+
+  String get unlockNow =>
+      _t(en: 'Unlock Now', ru: 'Разблокировать', uz: 'Hozir ochish');
+
+  String get getSparksLabel =>
+      _t(en: 'Get Sparks', ru: 'Получить Искры', uz: 'Uchqun Olish');
+
+  // ── AI Mood Booster ─────────────────────────────────────────────────────────
+
+  String get howAreYouFeeling => _t(
+    en: 'How are you feeling?',
+    ru: 'Как вы себя чувствуете?',
+    uz: 'O\'zingizni qanday his qilyapsiz?',
+  );
+
+  String get pickMoodSubtitle => _t(
+    en: 'Pick a mood to receive your personalised affirmation.',
+    ru: 'Выберите настроение, чтобы получить персональное аффирмацию.',
+    uz: 'Shaxsiy affirmatsiya olish uchun kayfiyatni tanlang.',
+  );
+
+  String get selectMoodPrompt => _t(
+    en: 'Select a mood above\nto get your affirmation',
+    ru: 'Выберите настроение выше\nчтобы получить аффирмацию',
+    uz: 'Affirmatsiya olish uchun\nyuqoridan kayfiyat tanlang',
+  );
+
+  String get generatingAffirmation => _t(
+    en: 'Generating your affirmation…',
+    ru: 'Генерируем вашу аффирмацию…',
+    uz: 'Affirmatsiyangiz yaratilmoqda…',
+  );
+
+  String get newAffirmation => _t(en: 'New one', ru: 'Новая', uz: 'Yangi');
+
+  String get moodJoy => _t(en: 'Joy', ru: 'Радость', uz: 'Quvonch');
+
+  String get moodCalm => _t(en: 'Calm', ru: 'Спокойствие', uz: 'Tinchlik');
+
+  String get moodEnergy => _t(en: 'Energy', ru: 'Энергия', uz: 'Energiya');
+
+  // ── Splash ──────────────────────────────────────────────────────────────────
+
+  String get tagline => _t(
+    en: 'Rhythm for your mind',
+    ru: 'Ритм для вашего разума',
+    uz: 'Fikringiz uchun ritm',
+  );
+
+  // ── Journey / weekdays ──────────────────────────────────────────────────────
+
+  List<String> get weekdayLabels => [
+    _t(en: 'Mon', ru: 'Пн', uz: 'Du'),
+    _t(en: 'Tue', ru: 'Вт', uz: 'Se'),
+    _t(en: 'Wed', ru: 'Ср', uz: 'Ch'),
+    _t(en: 'Thu', ru: 'Чт', uz: 'Pa'),
+    _t(en: 'Fri', ru: 'Пт', uz: 'Ju'),
+    _t(en: 'Sat', ru: 'Сб', uz: 'Sh'),
+    _t(en: 'Sun', ru: 'Вс', uz: 'Ya'),
+  ];
+
+  // ── Choose Aura dialog ──────────────────────────────────────────────────────
+
+  String unlockAura(String auraName) => _t(
+    en: 'Unlock $auraName?',
+    ru: 'Разблокировать $auraName?',
+    uz: '$auraName ni ochish?',
+  );
+
+  String sparksCost(int cost) =>
+      _t(en: '$cost sparks', ru: '$cost искр', uz: '$cost uchqun');
+
+  String yourEnergy(int sparks) => _t(
+    en: 'Your energy: $sparks sparks',
+    ru: 'Ваша энергия: $sparks искр',
+    uz: 'Energiyangiz: $sparks uchqun',
+  );
+
+  // ── Support / sparks ────────────────────────────────────────────────────────
+
+  String sparksAdded(int sparks) => _t(
+    en: 'Thanks! +$sparks sparks added.',
+    ru: 'Спасибо! +$sparks искр добавлено.',
+    uz: 'Rahmat! +$sparks uchqun qo\'shildi.',
+  );
+
+  // ── Settings ────────────────────────────────────────────────────────────────
+
+  String sessionTotal(String duration) =>
+      _t(en: 'Total: $duration', ru: 'Итого: $duration', uz: 'Jami: $duration');
+
+  // ── Privacy policy / agreements ───────────────────────────────────────────
+
+  String get privacyPolicyHeading => _t(
+    en: 'ZenPulse Privacy Policy',
+    ru: 'Политика Конфиденциальности ZenPulse',
+    uz: 'ZenPulse Maxfiylik Siyosati',
+  );
+
+  String get privacyPolicySummary => _t(
+    en:
+        'We respect your privacy. This app stores session configuration '
+        'locally on your device during runtime and does not sell your data. '
+        'No personal data is shared with third parties in this demo build.',
+    ru:
+        'Мы уважаем вашу конфиденциальность. Это приложение сохраняет '
+        'настройки сессий локально на вашем устройстве во время работы и не '
+        'продаёт ваши данные. В этой демо-версии личные данные не передаются '
+        'третьим лицам.',
+    uz:
+        'Biz sizning maxfiyligingizni hurmat qilamiz. Ilova sessiya '
+        'sozlamalarini ish jarayonida qurilmangizda mahalliy saqlaydi va '
+        'ma\'lumotlaringizni sotmaydi. Ushbu demo versiyada shaxsiy '
+        'ma\'lumotlar uchinchi tomonlarga uzatilmaydi.',
+  );
+
+  String get dataWeUseTitle => _t(
+    en: 'Data We Use',
+    ru: 'Какие Данные Мы Используем',
+    uz: 'Biz Foydalanadigan Ma\'lumotlar',
+  );
+
+  String get dataUseItemSessionDurations => _t(
+    en: '- Session durations you configure',
+    ru: '- Настроенные вами длительности сессий',
+    uz: '- Siz sozlagan sessiya davomiyliklari',
+  );
+
+  String get dataUseItemAura => _t(
+    en: '- Selected appearance aura',
+    ru: '- Выбранная тема-аура оформления',
+    uz: '- Tanlangan tashqi ko\'rinish aurasi',
+  );
+
+  String get dataUseItemSubscription => _t(
+    en: '- Subscription state in mock/demo mode',
+    ru: '- Состояние подписки в mock/demo режиме',
+    uz: '- Mock/demo rejimidagi obuna holati',
+  );
+
+  String get contactTitle => _t(en: 'Contact', ru: 'Контакты', uz: 'Aloqa');
+
+  String get privacyContactText => _t(
+    en: 'If you have privacy concerns, contact support@zenpulse.app',
+    ru:
+        'Если у вас есть вопросы по конфиденциальности, свяжитесь с '
+        'support@zenpulse.app',
+    uz:
+        'Agar maxfiylik bo\'yicha savollaringiz bo\'lsa, '
+        'support@zenpulse.app manziliga yozing',
+  );
+
   String _t({required String en, required String ru, required String uz}) {
     switch (locale.languageCode) {
       case 'ru':

@@ -64,11 +64,8 @@ class HomeDashboard extends StatelessWidget {
                     vertical: 12,
                   ),
                 ),
-                onPressed: () => Navigator.pushNamed(
-                  context,
-                  AppRoutes.timer,
-                  arguments: 6,
-                ),
+                onPressed: () =>
+                    Navigator.pushNamed(context, AppRoutes.timer, arguments: 6),
                 child: Text(l10n.sixMinutes),
               ),
             ],
@@ -126,7 +123,7 @@ class HomeDashboard extends StatelessWidget {
                 child: QuickPresetCard(
                   icon: Icons.nightlight_round,
                   duration: '45m',
-                  label: 'Total Relax',
+                  label: l10n.totalRelax,
                   gradientColors: [
                     tints[7].withValues(alpha: 0.42),
                     tints[9].withValues(alpha: 0.32),
@@ -179,7 +176,7 @@ class HomeDashboard extends StatelessWidget {
                   ),
                 ),
                 subtitle: Text(
-                  'Change colors and atmosphere',
+                  l10n.changeColorsSubtitle,
                   style: TextStyle(color: Colors.white.withValues(alpha: 0.7)),
                 ),
                 trailing: const Icon(Icons.chevron_right, color: Colors.white),
@@ -200,7 +197,7 @@ class HomeDashboard extends StatelessWidget {
                   ),
                 ),
                 subtitle: Text(
-                  'Get sparks and support updates',
+                  l10n.getSparksSubtitle,
                   style: TextStyle(color: Colors.white.withValues(alpha: 0.7)),
                 ),
                 trailing: const Icon(Icons.chevron_right, color: Colors.white),
@@ -213,7 +210,7 @@ class HomeDashboard extends StatelessWidget {
         if (emptyState) ...[
           SizedBox(height: AppSpacing.lg * scale),
           Text(
-            'No meditation sessions available right now.',
+            l10n.noMeditationsAvailable,
             style: TextStyle(color: Colors.white.withValues(alpha: 0.8)),
           ),
         ],
