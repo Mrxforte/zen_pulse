@@ -1,6 +1,143 @@
 # ZenPulse
 
-ZenPulse is a meditation and mindfulness app built with Flutter. It runs on both iOS and Android from a single codebase. The app gives users a library of guided meditation sessions, a session timer with phase tracking, an AI mood booster, a personal journey dashboard, and a fully themeable UI through an "Aura" system.
+A meditation and mindfulness app for iOS and Android, built with Flutter. One codebase, both platforms.
+
+The idea is simple — open the app, pick a session or set a timer, then just breathe. Everything else (themes, stats, language) stays out of your way until you need it.
+
+---
+
+## What's inside
+
+**Meditation library**
+A scrollable list of sessions. Free ones are accessible right away. Premium sessions show a lock badge and require a subscription. The layout switches between a single column and a grid depending on screen size.
+
+**Session timer**
+Full-screen timer with a circular progress ring. Three configurable phases: centering, meditation, awakening. When a session finishes, it writes to your journey log and drops 10 sparks into your balance.
+
+**AI Mood Booster**
+Three moods to choose from — Joy, Calm, Energy. Tap one and you get a personalised affirmation back. Hit the button again to get a new one. Built on a mock service with a small simulated delay so the interaction feels real.
+
+**Journey dashboard**
+A personal stats page. Weekly activity bar chart, current streak, average focus minutes, mindfulness points, total sessions. Also shows your last 6 sessions with date and time.
+
+**Aura system**
+Six colour themes that affect everything in the app — background gradients, cards, app bar, buttons, all of it. Three come unlocked by default. The other three cost sparks.
+
+| Aura | Feel | Unlock |
+|---|---|---|
+| Deep Mind | Deep purple, focused | Free |
+| Nature Path | Forest green, calm | Free |
+| Inner Fire | Burnt orange, energised | Free |
+| Sunset Glow | Warm amber evening | 150 sparks |
+| Ocean Deep | Dark teal, mysterious | 200 sparks |
+| Lavender Dream | Soft purple, peaceful | 250 sparks |
+
+**Sparks**
+An in-app currency. You earn them by finishing sessions. You can also grab more through the support screen. They're used only to unlock premium auras — nothing hidden.
+
+**Support screen**
+Five optional contribution tiers from $0.19 to $1.99. Each one adds sparks. Completely optional, no pressure.
+
+**Settings**
+Adjust the length of each session phase, switch language, and jump to the aura picker. App version and privacy policy are also there.
+
+**Subscription / paywall**
+Monthly and yearly plans with a simulated purchase and restore flow. Yearly shows a "Best Value" badge.
+
+**Languages**
+English, Russian, and Uzbek. Switch at runtime from settings, no restart needed.
+
+---
+
+## Tech
+
+- **Flutter + Dart**
+- **Provider** — state management
+- **get_it** — dependency injection
+- **SharedPreferences** — local storage for sparks, settings, session config
+- **MVVM** — models, providers, viewmodels, views in clean separate layers
+
+---
+
+## Project structure
+
+```
+lib/
+├── main.dart
+├── app/
+│   └── zen_pulse_app.dart          # MaterialApp setup, theme, routes
+├── core/
+│   ├── bootstrap/                  # App init, get_it registration
+│   ├── config/
+│   │   ├── aura_theme.dart         # All 6 palettes, ThemeExtension, buildAuraTheme()
+│   │   └── app_environment.dart
+│   ├── di/
+│   ├── l10n/
+│   │   └── app_localizations.dart
+│   └── logging/
+├── models/
+│   ├── meditation.dart
+│   └── user.dart
+├── providers/
+│   ├── affirmation_provider.dart
+│   ├── journey_provider.dart
+│   ├── meditation_provider.dart
+│   ├── settings_provider.dart      # Aura, locale, phase durations
+│   ├── subscription_provider.dart
+│   └── support_provider.dart       # Sparks balance, contribution packs
+├── services/
+│   └── mock_api_service.dart
+├── utils/
+│   ├── app_icons.dart
+│   ├── app_images.dart
+│   ├── app_routes.dart
+│   ├── app_strings.dart
+│   └── constants.dart              # Colors, spacing, screenScale(), sp()
+├── viewmodels/
+│   ├── affirmation/
+│   ├── meditation_list/
+│   ├── paywall/
+│   └── settings/
+├── views/
+│   ├── affirmation/
+│   ├── choose_aura/
+│   ├── home/
+│   │   └── widgets/
+│   ├── journey/
+│   ├── meditation_list/
+│   ├── meditation_timer/
+│   ├── paywall/
+│   ├── privacy_policy/
+│   ├── settings/
+│   ├── splash/
+│   └── support_development/
+└── widgets/
+    ├── glass_card.dart
+    ├── journey_stats_strip.dart
+    ├── metric_stat_card.dart
+    ├── quick_preset_card.dart
+    └── section_title.dart
+```
+
+---
+
+## Getting started
+
+You need Flutter 3.10+ and Dart 3.0+.
+
+```bash
+git clone https://github.com/Mrxforte/zen_pulse.git
+cd zen_pulse
+flutter pub get
+flutter run
+```
+
+To check for issues:
+
+```bash
+flutter analyze
+```
+
 
 
 ---
