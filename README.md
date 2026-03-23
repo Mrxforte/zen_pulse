@@ -14,6 +14,12 @@ It focuses on a clean experience: guided sessions, progress tracking, mood-based
 - Localization support (English, Russian, Uzbek)
 - Android, iOS, and web support
 
+## Screenshots
+
+| Home | Journey | Timer |
+|---|---|---|
+| ![Home](docs/screenshots/home.png) | ![Journey](docs/screenshots/journey.png) | ![Timer](docs/screenshots/timer.png) |
+
 ## App Functionality
 
 ### Meditation Home
